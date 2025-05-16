@@ -1,0 +1,27 @@
+body {
+    color: white;
+    background-color: black;
+    font-family: "Inter-Regular", sans-serif;
+    font-size: 1rem;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+.page {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
