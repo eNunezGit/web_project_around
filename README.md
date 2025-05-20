@@ -32,9 +32,10 @@ project/
 
 To view the page:
 
-1. Clone or download the repository.
-2. Open `index.html` in your browser.
-3. Explore the layout and interact with the page features.
+1. Visit: https://enunezgit.github.io/web_project_around/
+2. Clone or download the repository.
+3. Open `index.html` in your browser.
+4. Explore the layout and interact with the page features.
 
 ## 📚 Skills Demonstrated
 
