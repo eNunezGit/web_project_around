@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="page">
-        <div class="popup">
+        <div class="popup" style="display: none;">
             <button class="popup__close-button">
                 <img
                 class="popup__close-button-img"
@@ -23,8 +23,8 @@
                 <form class="popup__form">
                     <fieldset class="popup__form-fieldset">
                         <p class="popup__form-legend">Editar Perfil</p>
-                        <input class="popup__form-input" type="text" placeholder="Nombre">
-                        <input class="popup__form-input" type="text" placeholder="Acerca de ti">
+                        <input id="profile-name-input" class="popup__form-input" type="text" placeholder="Nombre">
+                        <input id="profile-info-input" class="popup__form-input" type="text" placeholder="Acerca de ti">
                     </fieldset>
                     <button class="popup__submit-button" type="submit">
                         <img
@@ -167,5 +167,6 @@
             </p>
         </footer>
     </div>
+    <script src="./scripts/popupForm.js"></script>
 </body>
 </html>
