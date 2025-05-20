@@ -1,2 +1,2 @@
-import '../scripts/popupForm.js';
-import '../scripts/editButton.js';
+import './scripts/popupForm.js';
+import './scripts/editButton.js';
