@@ -23,10 +23,10 @@
 
 .popup__form-container {
     width: 35vw;
-    height: 50vh;
+    height: 28vw;
     position: fixed;
     top: 26%;
-    left: 31%;
+    left: 32%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,7 +86,15 @@
     background-color: black;
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 780px) {
+    .popup__form-container {
+        width: 40vw;
+        height: 50vh;
+        left: 30%;
+    }
+}
+
+@media screen and (max-width: 500px) {
     .popup__close-button {
         top: 18%;
         right: 15%;
@@ -94,7 +102,8 @@
 
     .popup__form-container {
         width: 68vw;
-        height: 60vh;
+        min-width: 200px;
+        height: 50vh;
         top: 24%;
         left: 15%;
     }
