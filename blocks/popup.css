@@ -52,7 +52,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 4vh;
+    gap: 3vw;
     border: none;
     margin: 0;
     padding: 0;
@@ -68,13 +68,14 @@
 
 .popup__form-input {
     width: 95%;
-    height: 28px;
+    height: auto;
     border: none;
     border-bottom: 1px solid rgb(202, 202, 202);
 }
 
 .popup__submit-button {
     width: 100%;
+    min-width: 200px;
     height: auto;
 }
 
@@ -87,10 +88,19 @@
 }
 
 @media screen and (max-width: 780px) {
+    .popup__close-button {
+        top: 20%;
+        right: 25%;
+    }
+
     .popup__form-container {
-        width: 40vw;
-        height: 50vh;
-        left: 30%;
+        width: 45vw;
+        height: 38vw;
+        left: 26.5%;
+    }
+
+    .popup__form-fieldset {
+        gap: 5vw;
     }
 }
 
@@ -103,8 +113,13 @@
     .popup__form-container {
         width: 68vw;
         min-width: 200px;
-        height: 50vh;
+        height: 55vw;
+        min-height: 200px;
         top: 24%;
         left: 15%;
+    }
+
+    .popup__form-fieldset {
+        gap: 4vw;
     }
 }
