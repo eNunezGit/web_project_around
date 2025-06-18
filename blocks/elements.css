@@ -19,6 +19,7 @@
     width: 100%;
     height: auto;
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -32,6 +33,20 @@
     margin: 0;
     padding: 0;
     object-fit: fill;
+}
+
+.elements__delete-button {
+    width: clamp(1rem, 2vw, 1.5rem);
+    min-width: 15px;
+    height: auto;
+    min-height: 15px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+
+.elements__delete-button:hover {
+    opacity: 0.75;
 }
 
 .elements__legend {
