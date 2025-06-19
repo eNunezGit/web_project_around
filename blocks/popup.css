@@ -1,4 +1,5 @@
 .popup {
+    z-index: 1;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -84,6 +85,10 @@
 .popup__submit-button-text {
     color: white;
 }
+
+.popup__img {}
+
+.popup__img-title {}
 
 @media screen and (max-width: 780px) {
     .popup__close-button {
