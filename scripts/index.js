@@ -1,4 +1,5 @@
-import './popupForm.js';
+import './editProfileForm.js';
 import './editButton.js';
 import './deleteCardButton.js';
 import './likeButton.js';
+import './closeButton.js';

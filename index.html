@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="page">
-        <div id="editProfile" class="popup" style="display: none;">
+        <div id="editProfileForm" class="popup" style="display: none;">
             <button class="popup__close-button">
                 <img
                 class="popup__close-button-img"
@@ -23,10 +23,10 @@
                 <form class="popup__form">
                     <fieldset class="popup__form-fieldset">
                         <p class="popup__form-legend">Editar Perfil</p>
-                        <input id="profile-name-input" class="popup__form-input" type="text" placeholder="Nombre">
-                        <input id="profile-info-input" class="popup__form-input" type="text" placeholder="Acerca de ti">
+                        <input id="input1" class="popup__form-input" type="text" placeholder="Nombre">
+                        <input id="input2" class="popup__form-input" type="text" placeholder="Acerca de ti">
                     </fieldset>
-                    <button class="popup__submit-button" type="submit">
+                    <button id="save-settings-button" class="popup__submit-button" type="submit">
                         <p class="popup__submit-button-text">Guardar</p>
                     </button>
                 </form>
@@ -48,7 +48,7 @@
             <div class="profile__settings">
                 <div class="profile__settings-wrapper">
                     <p class="profile__name">Tu Nombre</p>
-                    <button class="profile__edit-settings-button">
+                    <button id="edit-settings-button" class="profile__edit-settings-button">
                         <img
                         class="profile__edit-settings-button-img"
                         src="./images/edit-button.svg"
@@ -71,7 +71,7 @@
                     class="elements__img"
                     src="./images/valle-de-yosemite.jpg"
                     alt="Valle de Yosemite">
-                    <div id="imgDisplay" class="popup">
+                    <div id="imgDisplay" class="popup" style="display: none;">
                         <button class="popup__close-button">
                             <img
                             class="popup__close-button-img"
