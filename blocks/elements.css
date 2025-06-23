@@ -29,10 +29,11 @@
 
 .elements__img {
     width: 100%;
-    height: auto;
+    height: 300px;
     margin: 0;
     padding: 0;
-    object-fit: fill;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .elements__delete-button {
@@ -85,14 +86,14 @@
     object-fit: contain;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) {
     .elements__grid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, 1fr);
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
     .elements__grid {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 1fr);

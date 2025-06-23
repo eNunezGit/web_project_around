@@ -1,5 +1,9 @@
 import './editProfileForm.js';
 import './editButton.js';
+import './addCardForm.js';
+import './addCardFunc.js';
+import './imgDisplay.js';
+import './addButton.js';
 import './deleteCardButton.js';
 import './likeButton.js';
 import './closeButton.js';

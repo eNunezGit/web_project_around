@@ -78,13 +78,13 @@
     font-weight: 400;
 }
 
-.profile__add-button {
+.profile__add-card-button {
     width: 15%;
     min-width: 75px;
     height: auto;
 }
 
-.profile__add-button-img {
+.profile__add-card-button-img {
     width: 100%;
     height: auto;
     margin: 0;

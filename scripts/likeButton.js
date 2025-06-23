@@ -1,17 +1,8 @@
-const likeButton = document.querySelectorAll('.elements__like-button');
-
-function likeCard(e) {
-    console.log(e);
-    console.log(e.target);
-    const cardLike = e.target.closest('.elements__like-button-img');
-    if (cardLike.src.includes('like-button.svg')) {
-        cardLike.src = '../images/like-button_full.svg';
-    } else if (cardLike.src.includes('like-button_full.svg')) {
-        cardLike.src = '../images/like-button.svg';
+export function likeCard(e) {
+    const likeButton = e.target.closest('.elements__like-button-img');
+    if (likeButton.src.includes('like-button.svg')) {
+        likeButton.src = '../images/like-button_full.svg';
+    } else if (likeButton.src.includes('like-button_full.svg')) {
+        likeButton.src = '../images/like-button.svg';
     }
 }
-
-
-likeButton.forEach(button => {
-    button.addEventListener('click', likeCard);
-});

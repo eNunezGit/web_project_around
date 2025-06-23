@@ -1,22 +1,27 @@
 .popup {
     z-index: 1;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(0, 0, 0, 0.5);
 }
 
 .popup__close-button {
+    z-index: 2;
     width: 25px;
     height: auto;
-    position: fixed;
-    top: 20%;
-    right: 31%;
+    position: absolute;
+    top: -1.75rem;
+    right: -1.75rem;
 }
 
 .popup__close-button-img {
+    z-index: 2;
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -86,16 +91,33 @@
     color: white;
 }
 
-.popup__img {}
+.popup__container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-.popup__img-title {}
+.popup__img-container {
+    width: auto;
+    height: auto;
+    position: fixed;
+}
+
+.popup__img {
+    max-width: 75vw;
+    max-height: 75vh;
+    object-fit: contain;
+}
+
+.popup__img-title {
+    align-self: flex-start;
+}
 
 @media screen and (max-width: 780px) {
-    .popup__close-button {
-        top: 20%;
-        right: 25%;
-    }
-
     .popup__form-container {
         width: 45vw;
         height: 38vw;
@@ -108,11 +130,6 @@
 }
 
 @media screen and (max-width: 500px) {
-    .popup__close-button {
-        top: 18%;
-        right: 15%;
-    }
-
     .popup__form-container {
         width: 68vw;
         min-width: 200px;
