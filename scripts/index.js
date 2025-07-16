@@ -119,10 +119,5 @@ createCardButton.addEventListener('click', (event) => {
     const Input1 = addCardForm.querySelector('#input1');
     const Input2 = addCardForm.querySelector('#input2');
 
-    if (Input1.value === '' || Input2.value === '') {
-        alert('Por favor llene ambos campos: Título y enlace a la imagen.');
-        return;
-    } else {
-        addCardFunc(Input1.value, Input2.value);
-    }
+    addCardFunc(Input1.value, Input2.value);
 });
