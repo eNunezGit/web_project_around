@@ -79,6 +79,14 @@
     border-bottom: 1px solid rgb(202, 202, 202);
 }
 
+.popup__form-input-error {
+    border-bottom: 1px solid red;
+}
+
+.popup__error-info {
+    color: red;
+}
+
 .popup__submit-button {
     width: 100%;
     min-width: 200px;

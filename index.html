@@ -23,8 +23,10 @@
                 <form class="popup__form">
                     <fieldset class="popup__form-fieldset">
                         <p class="popup__form-legend">Editar Perfil</p>
-                        <input id="input1" class="popup__form-input" type="text" placeholder="Nombre">
-                        <input id="input2" class="popup__form-input" type="text" placeholder="Acerca de ti">
+                        <input id="user-name" class="popup__form-input" type="text" placeholder="Nombre">
+                        <span id="user-name-error" class="popup__error-info">Lore ipsum</span>
+                        <input id="user-info" class="popup__form-input" type="text" placeholder="Acerca de ti">
+                        <span id="user-info-error" class="popup__error-info">Lore ipsum</span>
                     </fieldset>
                     <button id="saveSettingsButton" class="popup__submit-button" type="submit">
                         <p class="popup__submit-button-text">Guardar</p>
@@ -43,8 +45,10 @@
                 <form class="popup__form">
                     <fieldset class="popup__form-fieldset">
                         <p class="popup__form-legend">Nuevo Lugar</p>
-                        <input id="input1" class="popup__form-input" type="text" placeholder="Título">
-                        <input id="input2" class="popup__form-input" type="url" placeholder="Enlace a la imagen">
+                        <input id="card-title" class="popup__form-input" type="text" placeholder="Título">
+                        <span id="card-title-error" class="popup__error-info">Lore ipsum</span>
+                        <input id="card-url" class="popup__form-input" type="url" placeholder="Enlace a la imagen">
+                        <span id="card-url-error" class="popup__error-info">Lore ipsum</span>
                     </fieldset>
                     <button id="createCardButton" class="popup__submit-button" type="submit">
                         <p class="popup__submit-button-text">Crear</p>
