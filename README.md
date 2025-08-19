@@ -16,18 +16,6 @@ This is a simple and responsive web page built using **HTML**, **CSS**, and **Ja
 - Interactive elements powered by JavaScript
 - Clean and readable code following modern best practices
 
-## 📁 Project Structure
-
-project/
-│
-├── index.html # Main HTML file
-├── css/
-│ └── styles.css # BEM-styled CSS file
-├── js/
-│ └── script.js # JavaScript with DOM logic
-└── assets/ # Images, icons, or other resources
-
-
 ## 🚀 Getting Started
 
 To view the page:
@@ -43,7 +31,7 @@ To view the page:
 - Structuring CSS using BEM naming convention
 - Creating responsive designs with Flexbox
 - Writing clean, semantic, and maintainable front-end code
+- Js usage for adding and delete cards, form logic and button behavior
 
 ---
 
-Feel free to customize this README to fit the specific features and purpose of your page.
