@@ -13,8 +13,12 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:not(:disabled):hover {
     opacity: 0.5;
+}
+
+button:disabled {
+    pointer-events: none;
 }
 
 .page {
