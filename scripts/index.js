@@ -27,24 +27,11 @@ const initialCards = [
     }
 ];
 
-function addCardFunc(cardName, cardLink) {
-    const cardGrid = document.querySelector('.elements__grid');
-    const cardTemplate = cardGrid.querySelector('#cardTemplate');
-    const cardElement = cardTemplate.content.cloneNode(true);
 
-    cardElement.querySelector('.elements__img').src = cardLink;
-    cardElement.querySelector('.elements__img').alt = cardName;
-    cardElement.querySelector('.elements__title').textContent = cardName;
-
-    cardElement.querySelector('.popup__img').src = cardLink;
-    cardElement.querySelector('.popup__img').alt = cardName;
-    cardElement.querySelector('.popup__img-title').textContent = cardName;
-
-
-    cardGrid.appendChild(cardElement);
-}
-
-initialCards.forEach(card => addCardFunc(card.name, card.link));
+initialCards.forEach(card => {
+    const newCard = new DefaultCard(card.name, card.link, '#cardTemplate');
+    document.querySelector('.elements__grid').appendChild(newCard.setUpCard());
+});
 
 const resetFormValidation = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll(".popup__form-input"));
