@@ -1,4 +1,5 @@
 import { enableValidation } from "./validation.js";
+import { DefaultCard } from "./card.js";
 
 const initialCards = [
     {
@@ -77,24 +78,6 @@ function likeCard(e) {
         likeButton.src = '../images/like-button.svg';
     }
 }
-
-const cardGrid = document.querySelector('.elements__grid');
-
-cardGrid.addEventListener("click", (e) => {
-    e.target.closest('.elements__card').querySelector(".popup__close-button").addEventListener('click', hidePopup);
-
-    if (e.target.classList.contains("elements__img")) {
-        imgDisplay(e);
-    }
-
-    if (e.target.classList.contains("elements__delete-button-img")) {
-        deleteCard(e);
-    }
-
-    if (e.target.classList.contains("elements__like-button-img")) {
-        likeCard(e);
-    }
-})
 
 const popupFormSetUp = (formId, submitButtonId) => {
     formId.querySelector('.popup__close-button').addEventListener('click', hidePopup);
