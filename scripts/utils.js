@@ -1,39 +1,23 @@
-const resetFormValidation = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(".popup__form-input"));
-    const errorList = Array.from(formElement.querySelectorAll(".popup__error-info"));
-    inputList.forEach((inputElement) => {
-        inputElement.classList.remove("popup__form-input-error");
-    });
-    errorList.forEach((errorElement) => {
-    errorElement.classList.remove("popup__error-info_visible");
-    errorElement.textContent = "";
-    });
-}
-
-function hidePopup(popup) {
-    if (popup.style.display === 'block') {
-        popup.style.display = 'none';
-        if (popup.querySelector('.popup__form')) {
-            popup.querySelector('.popup__form').reset();
-            resetFormValidation(popup.querySelector('.popup__form'));
-        }
-    }
-};
-
-export function popupHandler(popup, submitButton = null) {
+export function popupHandler(popup, submitButton, functionToRun = hidePopup) {
     document.addEventListener('keydown', (e) => {
         if (e.key === "Escape") {
-            hidePopup(popup);
+            functionToRun(popup);
         }
     });
-    popup.querySelector('.popup__close-button').addEventListener('click', () => hidePopup(popup));
-    popup.querySelector('.popup__overlay').addEventListener('dblclick', () => hidePopup(popup));
+    popup.querySelector('.popup__close-button').addEventListener('click', () => functionToRun(popup));
+    popup.querySelector('.popup__overlay').addEventListener('dblclick', () => functionToRun(popup));
     if (submitButton) {
         submitButton.addEventListener('click', () => {
-            hidePopup(popup);
+            functionToRun(popup);
         });
     }
 };
+
+export function hidePopup(popup) {
+    if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+    }
+}; 
 
 export function imgDisplay(e) {
     const parent = e.target.parentElement;

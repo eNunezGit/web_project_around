@@ -24,9 +24,9 @@
                     <form class="popup__form">
                         <fieldset class="popup__form-fieldset">
                             <p class="popup__form-legend">Editar Perfil</p>
-                            <input id="user-name" class="popup__form-input" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
+                            <input id="user-name" name="userName" class="popup__form-input" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
                             <span id="user-name-error" class="popup__error-info">Lore ipsum</span>
-                            <input id="user-info" class="popup__form-input" type="text" placeholder="Acerca de ti" minlength="2" maxlength="200" required>
+                            <input id="user-info" name="userInfo" class="popup__form-input" type="text" placeholder="Acerca de ti" minlength="2" maxlength="200" required>
                             <span id="user-info-error" class="popup__error-info">Lore ipsum</span>
                         </fieldset>
                         <button id="saveSettingsButton" class="popup__submit-button" type="submit">
@@ -48,9 +48,9 @@
                     <form class="popup__form">
                         <fieldset class="popup__form-fieldset">
                             <p class="popup__form-legend">Nuevo Lugar</p>
-                            <input id="card-title" class="popup__form-input" type="text" placeholder="Título" minlength="2" maxlength="40" required>
+                            <input id="card-title" name="cardTitle" class="popup__form-input" type="text" placeholder="Título" minlength="2" maxlength="40" required>
                             <span id="card-title-error" class="popup__error-info">Lore ipsum</span>
-                            <input id="card-url" class="popup__form-input" type="url" placeholder="Enlace a la imagen" required>
+                            <input id="card-url" name="cardUrl" class="popup__form-input" type="url" placeholder="Enlace a la imagen" required>
                             <span id="card-url-error" class="popup__error-info">Lore ipsum</span>
                         </fieldset>
                         <button id="createCardButton" class="popup__submit-button" type="submit">
