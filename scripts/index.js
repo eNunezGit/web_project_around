@@ -89,5 +89,6 @@ createCardButton.addEventListener('click', (event) => {
     const cardTitleInput = addCardForm.querySelector('#card-title');
     const cardImageInput = addCardForm.querySelector('#card-url');
 
-    addCardFunc(cardTitleInput.value, cardImageInput.value);
+    const newCard = new DefaultCard(cardTitleInput.value, cardImageInput.value, '#cardTemplate');
+    document.querySelector('.elements__grid').prepend(newCard.setUpCard());
 });
