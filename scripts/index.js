@@ -1,6 +1,6 @@
-import { enableValidation } from "./validation.js";
-import { DefaultCard } from "./card.js";
-import { popupHandler } from "./utils.js";
+import { FormValidation } from "./FormValidation.js";
+import { DefaultCard } from "./Card.js";
+import { popupHandler, hidePopup } from "./utils.js";
 
 const initialCards = [
     {
@@ -37,32 +37,35 @@ initialCards.forEach(card => {
 
 const popupFormSetUp = (formId, submitButtonId) => {
     formId.style.display = 'block';
+    
+    const formValidation = new FormValidation({
+        fieldsetSelector: ".popup__form-fieldset",
+        inputSelector: ".popup__form-input",
+        submitButtonSelector: submitButtonId,
+        inactiveButtonClass: "popup__submit-button_disabled",
+        inputErrorClass: "popup__form-input-error",
+        errorClass: "popup__error-info_visible"
+    }, formId);
 
-    popupHandler(formId, submitButtonId);
+    formValidation.enableValidation();
 
-    enableValidation({
-    formSelector: formId,
-    fieldsetSelector: ".popup__form-fieldset",
-    inputSelector: ".popup__form-input",
-    submitButtonSelector: submitButtonId,
-    inactiveButtonClass: "popup__submit-button_disabled",
-    inputErrorClass: "popup__form-input-error",
-    errorClass: "popup__error-info_visible"
+    popupHandler(formId, submitButtonId, () => {
+        hidePopup(formId);
+        formValidation.resetValidation();
     });
-}
+
+    return formValidation;
+};
 
 const editProfileForm = document.querySelector('#editProfileForm');
 const saveSettingsButton = editProfileForm.querySelector('#saveSettingsButton');
 const editButton = document.querySelector('#editSettingsButton');
 
-
 editButton.addEventListener('click', () => {
     popupFormSetUp(editProfileForm, saveSettingsButton);
 });
 
-saveSettingsButton.addEventListener('click', (event) => {
-    event.preventDefault();
-
+saveSettingsButton.addEventListener('click', () => {
     const nameInput = editProfileForm.querySelector('#user-name');
     const infoInput = editProfileForm.querySelector('#user-info');
     const profileName = document.querySelector('.profile__name');
@@ -83,9 +86,7 @@ addCardButton.addEventListener('click', () => {
     popupFormSetUp(addCardForm, createCardButton);
 });
 
-createCardButton.addEventListener('click', (event) => {
-    event.preventDefault();
-
+createCardButton.addEventListener('click', () => {
     const cardTitleInput = addCardForm.querySelector('#card-title');
     const cardImageInput = addCardForm.querySelector('#card-url');
 

@@ -1,4 +1,4 @@
-import { popupHandler, imgDisplay, deleteCard, likeCard } from "./utils.js";
+import { popupHandler, hidePopup, imgDisplay, deleteCard, likeCard } from "./utils.js";
 
 export class DefaultCard {
     constructor(cardTitle, cardImg, cardTypeSelector) {
@@ -8,7 +8,7 @@ export class DefaultCard {
     }
     
     _setEventListeners(cardElement) {
-        popupHandler(cardElement.querySelector('.popup'));
+        popupHandler(cardElement.querySelector('.popup'), null, hidePopup);
 
         cardElement.querySelector('.elements__img').addEventListener('click', imgDisplay);
 
