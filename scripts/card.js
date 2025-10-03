@@ -1,4 +1,4 @@
-import { hidePopup, imgDisplay, deleteCard, likeCard } from "./utils.js";
+import { popupHandler, imgDisplay, deleteCard, likeCard } from "./utils.js";
 
 export class DefaultCard {
     constructor(cardTitle, cardImg, cardTypeSelector) {
@@ -8,12 +8,12 @@ export class DefaultCard {
     }
     
     _setEventListeners(cardElement) {
-        cardElement.querySelector('.popup__close-button').addEventListener('click', hidePopup);
+        popupHandler(cardElement.querySelector('.popup'));
 
         cardElement.querySelector('.elements__img').addEventListener('click', imgDisplay);
 
         cardElement.querySelector('.elements__delete-button-img').addEventListener('click', deleteCard);
-        
+
         cardElement.querySelector('.elements__like-button-img').addEventListener('click', likeCard);
     }
 
