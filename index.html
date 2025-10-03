@@ -13,47 +13,51 @@
 <body>
     <div class="page">
         <div id="editProfileForm" class="popup" style="display: none;">
-            <div class="popup__form-container">
-                <button class="popup__close-button">
-                    <img
-                    class="popup__close-button-img"
-                    src="./images/close-icon.svg"
-                    alt="Botón de cerrar">
-                </button>
-                <form class="popup__form">
-                    <fieldset class="popup__form-fieldset">
-                        <p class="popup__form-legend">Editar Perfil</p>
-                        <input id="user-name" class="popup__form-input" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
-                        <span id="user-name-error" class="popup__error-info">Lore ipsum</span>
-                        <input id="user-info" class="popup__form-input" type="text" placeholder="Acerca de ti" minlength="2" maxlength="200" required>
-                        <span id="user-info-error" class="popup__error-info">Lore ipsum</span>
-                    </fieldset>
-                    <button id="saveSettingsButton" class="popup__submit-button" type="submit">
-                        <p class="popup__submit-button-text">Guardar</p>
+            <div class="popup__overlay">
+                <div class="popup__form-container">
+                    <button class="popup__close-button">
+                        <img
+                        class="popup__close-button-img"
+                        src="./images/close-icon.svg"
+                        alt="Botón de cerrar">
                     </button>
-                </form>
+                    <form class="popup__form">
+                        <fieldset class="popup__form-fieldset">
+                            <p class="popup__form-legend">Editar Perfil</p>
+                            <input id="user-name" class="popup__form-input" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
+                            <span id="user-name-error" class="popup__error-info">Lore ipsum</span>
+                            <input id="user-info" class="popup__form-input" type="text" placeholder="Acerca de ti" minlength="2" maxlength="200" required>
+                            <span id="user-info-error" class="popup__error-info">Lore ipsum</span>
+                        </fieldset>
+                        <button id="saveSettingsButton" class="popup__submit-button" type="submit">
+                            <p class="popup__submit-button-text">Guardar</p>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
         <div id="addCardForm" class="popup" style="display: none;">
-            <div class="popup__form-container">
-                <button class="popup__close-button">
-                    <img
-                    class="popup__close-button-img"
-                    src="./images/close-icon.svg"
-                    alt="Botón de cerrar">
-                </button>
-                <form class="popup__form">
-                    <fieldset class="popup__form-fieldset">
-                        <p class="popup__form-legend">Nuevo Lugar</p>
-                        <input id="card-title" class="popup__form-input" type="text" placeholder="Título" minlength="2" maxlength="40" required>
-                        <span id="card-title-error" class="popup__error-info">Lore ipsum</span>
-                        <input id="card-url" class="popup__form-input" type="url" placeholder="Enlace a la imagen" required>
-                        <span id="card-url-error" class="popup__error-info">Lore ipsum</span>
-                    </fieldset>
-                    <button id="createCardButton" class="popup__submit-button" type="submit">
-                        <p class="popup__submit-button-text">Crear</p>
+            <div class="popup__overlay">
+                <div class="popup__form-container">
+                    <button class="popup__close-button">
+                        <img
+                        class="popup__close-button-img"
+                        src="./images/close-icon.svg"
+                        alt="Botón de cerrar">
                     </button>
-                </form>
+                    <form class="popup__form">
+                        <fieldset class="popup__form-fieldset">
+                            <p class="popup__form-legend">Nuevo Lugar</p>
+                            <input id="card-title" class="popup__form-input" type="text" placeholder="Título" minlength="2" maxlength="40" required>
+                            <span id="card-title-error" class="popup__error-info">Lore ipsum</span>
+                            <input id="card-url" class="popup__form-input" type="url" placeholder="Enlace a la imagen" required>
+                            <span id="card-url-error" class="popup__error-info">Lore ipsum</span>
+                        </fieldset>
+                        <button id="createCardButton" class="popup__submit-button" type="submit">
+                            <p class="popup__submit-button-text">Crear</p>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
         <header class="header header_margin">
@@ -97,7 +101,7 @@
                         src=""
                         alt="">
                         <div id="imgDisplay" class="popup" style="display: none;">
-                            <div class="popup__container">
+                            <div class="popup__overlay">
                                 <div class="popup__img-container">
                                     <button class="popup__close-button">
                                         <img

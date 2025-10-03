@@ -112,7 +112,7 @@
     color: inherit;
 }
 
-.popup__container {
+.popup__overlay {
     width: 100vw;
     height: 100vh;
     display: flex;
