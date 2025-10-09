@@ -86,6 +86,7 @@
 
 .popup__error-info {
     color: none;
+    font-size: clamp(0.65rem, 1.5vw, 0.8rem);
 }
 
 
@@ -140,7 +141,7 @@
     align-self: flex-start;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 900px) and (min-width: 500px) {
     .popup__form-container {
         width: 45vw;
         height: 40vw;
@@ -156,10 +157,9 @@
     .popup__form-container {
         width: 68vw;
         min-width: 200px;
-        height: 60vw;
-        min-height: 200px;
+        height: 62vw;
+        min-height: 250px;
         top: 24%;
         left: 15%;
     }
-
 }
