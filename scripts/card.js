@@ -22,6 +22,8 @@ export class DefaultCard {
     const cardTemplate = cardGrid.querySelector(cardTypeSelector);
     const cardElement = cardTemplate.content.cloneNode(true);
 
+    cardElement.querySelector('.elements__card').id = cardTitle
+
     cardElement.querySelector('.elements__img').src = cardImg;
     cardElement.querySelector('.elements__img').alt = cardTitle;
     cardElement.querySelector('.elements__title').textContent = cardTitle;
