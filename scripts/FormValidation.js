@@ -1,4 +1,4 @@
-export class FormValidation {
+export default class FormValidation {
     constructor(config, formElement) {
         this._formElement = formElement;
         this._fieldsetSelector = config.fieldsetSelector;
