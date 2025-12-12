@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="page">
-        <div id="editProfileForm" class="popup" style="display: none;">
+        <div id="editProfileForm" class="popup" style="display: none">
             <div class="popup__overlay">
                 <div class="popup__form-container">
                     <button class="popup__close-button">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div id="addCardForm" class="popup" style="display: none;">
+        <div id="addCardForm" class="popup" style="display: none">
             <div class="popup__overlay">
                 <div class="popup__form-container">
                     <button class="popup__close-button">
@@ -60,6 +60,46 @@
                 </div>
             </div>
         </div>
+        <template id="cardTemplate">
+            <div id="" class="elements__card">
+                <img
+                class="elements__img"
+                src=""
+                alt="">
+                <div id="" class="popup" style="display: none">
+                    <div class="popup__overlay">
+                        <div class="popup__img-container">
+                            <button class="popup__close-button">
+                                <img
+                                class="popup__close-button-img"
+                                src="./images/close-icon.svg"
+                                alt="Botón de cerrar">
+                            </button>
+                            <img
+                            class="popup__img"
+                            src=""
+                            alt="">
+                            <p class="popup__img-title"></p>
+                        </div>
+                    </div>
+                </div>
+                <button class="elements__delete-button">
+                    <img
+                    class="elements__delete-button-img"
+                    src="./images/delete-button.svg"
+                    alt="Botón de eliminar">
+                </button>
+                <div class="elements__legend">
+                    <p class="elements__title"></p>
+                    <button class="elements__like-button">
+                        <img
+                        class="elements__like-button-img"
+                        src="./images/like-button.svg"
+                        alt="Botón de Me Gusta">
+                    </button>
+                </div>
+            </div>
+        </template>
         <header class="header header_margin">
             <img
             class="header__logo"
@@ -94,46 +134,7 @@
         </div>
         <div class="elements elements_margin">
             <div class="elements__grid">
-                <template id="cardTemplate">
-                    <div class="elements__card">
-                        <img
-                        class="elements__img"
-                        src=""
-                        alt="">
-                        <div id="imgDisplay" class="popup" style="display: none;">
-                            <div class="popup__overlay">
-                                <div class="popup__img-container">
-                                    <button class="popup__close-button">
-                                        <img
-                                        class="popup__close-button-img"
-                                        src="./images/close-icon.svg"
-                                        alt="Botón de cerrar">
-                                    </button>
-                                    <img
-                                    class="popup__img"
-                                    src=""
-                                    alt="">
-                                    <p class="popup__img-title"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="elements__delete-button">
-                            <img
-                            class="elements__delete-button-img"
-                            src="./images/delete-button.svg"
-                            alt="Botón de eliminar">
-                        </button>
-                        <div class="elements__legend">
-                            <p class="elements__title"></p>
-                            <button class="elements__like-button">
-                                <img
-                                class="elements__like-button-img"
-                                src="./images/like-button.svg"
-                                alt="Botón de Me Gusta">
-                            </button>
-                        </div>
-                    </div>
-                </template>
+                <!-- Cards se insertan aquí -->
             </div>
         </div>
         <footer class="footer footer_margin">
