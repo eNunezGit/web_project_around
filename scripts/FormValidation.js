@@ -1,4 +1,4 @@
-export default class FormValidation {
+export class FormValidation {
     constructor(config, formElement) {
         this._formElement = formElement;
         this._fieldsetSelector = config.fieldsetSelector;
@@ -74,6 +74,7 @@ export default class FormValidation {
     resetValidation() {
         const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         const errorList = Array.from(this._formElement.querySelectorAll(`.${this._errorClass}`));
+
         inputList.forEach((inputElement) => {
             inputElement.classList.remove(this._inputErrorClass);
         });
@@ -82,6 +83,6 @@ export default class FormValidation {
             errorElement.textContent = "";
         });
 
-        this._formElement.querySelector('.popup__form').reset();
+        this._formElement.reset();
     }
 }
