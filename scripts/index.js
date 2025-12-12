@@ -1,5 +1,5 @@
 import {Section} from "./Section.js";
-import { DefaultCard } from "./Card.js";
+import {DefaultCard} from "./DefaultCard.js";
 import {PopupWithImage} from "./PopupWithImage.js";
 import {FormValidation} from "./FormValidation.js";
 import {PopupWithForm} from "./PopupWithForm.js";
