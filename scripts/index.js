@@ -91,7 +91,6 @@ editButton.addEventListener('click', () => {
         const nameInput = editProfileForm.querySelector('#user-name');
         const aboutInput = editProfileForm.querySelector('#user-info');
         const currentUserInfo = userInfo.getUserInfo();
-        console.log(currentUserInfo);
 
         nameInput.placeholder = currentUserInfo.name;
         aboutInput.placeholder = currentUserInfo.about;
