@@ -4,6 +4,9 @@ import {PopupWithImage} from "./PopupWithImage.js";
 import {FormValidation} from "./FormValidation.js";
 import {PopupWithForm} from "./PopupWithForm.js";
 import {UserInfo} from "./UserInfo.js";
+import api from "./Api.js";
+
+api.getUserInfo();
 
 const initialCards = [
     {
