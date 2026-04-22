@@ -88,7 +88,12 @@ const userInfo = new UserInfo({
 
 api.getUserInfo()
 .then(userData => {
-    userInfo.setUserInfo({name: userData.name, about: userData.about, avatar: userData.avatar});
+    userInfo.setUserInfo({
+        name: userData.name,
+        about: userData.about,
+        avatar: userData.avatar,
+        userId: userData._id
+    });
 })
 .catch(err => {
     console.error('Error fetching user info:', err);
