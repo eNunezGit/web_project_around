@@ -13,7 +13,7 @@ export class UserInfo {
         };
     }
 
-    setUserInfo({ name, about, avatar = this._avatarElement.src }) {
+    setUserInfo({name = this._nameElement.textContent, about = this._aboutElement.textContent, avatar = this._avatarElement.src}) {
         this._nameElement.textContent = name;
         this._aboutElement.textContent = about;
         this._avatarElement.src = avatar;
