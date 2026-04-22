@@ -5,7 +5,7 @@ class Api {
   }
 
   getUserInfo(){
-    fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers
     })
@@ -14,9 +14,6 @@ class Api {
         return res.json();
       }
       return Promise.reject(`Error: ${res.status} ${res.statusText}`);
-    })
-    .then(data => {
-      return data;
     })
     .catch(err => {
       console.log(err);

@@ -6,7 +6,7 @@ import {PopupWithForm} from "./PopupWithForm.js";
 import {UserInfo} from "./UserInfo.js";
 import api from "./Api.js";
 
-api.getUserInfo();
+
 
 const initialCards = [
     {
@@ -82,10 +82,17 @@ const editButton = document.querySelector('#editSettingsButton');
 
 const userInfo = new UserInfo({
     nameSelector: '.profile__name',
-    aboutSelector: '.profile__info'
+    aboutSelector: '.profile__info',
+    avatarSelector: '.profile__avatar'
 });
 
-
+api.getUserInfo()
+.then(userData => {
+    userInfo.setUserInfo({name: userData.name, about: userData.about, avatar: userData.avatar});
+})
+.catch(err => {
+    console.error('Error fetching user info:', err);
+});
 
 editButton.addEventListener('click', () => {
     popupFormSetUp(editProfileForm, saveSettingsButton, (data) => {
