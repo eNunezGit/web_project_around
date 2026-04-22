@@ -21,7 +21,19 @@ class Api {
     }
 
     getInitialCards() {
-        // ...
+        return fetch(`${this._baseUrl}/cards`, {
+            method: "GET",
+            headers: this._headers
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Error ${res.status} ${res.statusText}`)
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
   // otros métodos para trabajar con la API
