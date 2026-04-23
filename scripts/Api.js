@@ -4,7 +4,7 @@ class Api {
         this._headers = headers;
     }
 
-    getUserInfo(){
+    _getUserInfo(){
         return fetch(`${this._baseUrl}/users/me`, {
             method: "GET",
             headers: this._headers
@@ -13,14 +13,17 @@ class Api {
             if (res.ok) {
                 return res.json();
             }
-            return Promise.reject(`Error: ${res.status} ${res.statusText}`);
+            return Promise.reject(`
+                User info fetch failed...
+                Error: ${res.status} ${res.statusText}
+            `);
         })
         .catch(err => {
             console.log(err);
         });
     }
 
-    getInitialCards() {
+    _getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             method: "GET",
             headers: this._headers
@@ -29,14 +32,25 @@ class Api {
             if (res.ok) {
                 return res.json();
             }
-            return Promise.reject(`Error ${res.status} ${res.statusText}`)
+            return Promise.reject(`
+                Initial cards fetch failed...
+                Error: ${res.status} ${res.statusText}
+            `);
         })
         .catch(err => {
             console.log(err);
         });
     }
 
-  // otros métodos para trabajar con la API
+    getInitialData() {
+        return Promise.all([this._getUserInfo(), this._getInitialCards()])
+        .then(([userData, cardsData]) => {
+            return { user: userData, initialCards: cardsData };
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
 }
 
 const api = new Api({
