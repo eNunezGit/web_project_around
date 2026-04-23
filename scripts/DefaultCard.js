@@ -1,10 +1,13 @@
 import {deleteCard, likeCard} from "./utils.js";
 
 export class DefaultCard {
-    constructor(cardTitle, cardImg, cardId, handleCardClick) {
+    constructor({cardTitle, cardImg, cardId, likeVal, ownerId, handleCardClick}) {
         this.cardTitle = cardTitle;
         this.cardImg = cardImg;
         this.cardId = cardId;
+        this.likeVal = likeVal;
+        this._ownerId = ownerId;
+
         this._handleCardClick = handleCardClick;
     }
     
