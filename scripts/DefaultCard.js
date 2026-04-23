@@ -5,7 +5,7 @@ export class DefaultCard {
         this.cardTitle = cardTitle;
         this.cardImg = cardImg;
         this.cardId = cardId;
-        this.likeVal = likeVal;
+        this.isLiked = likeVal;
         this.ownerId = ownerId;
 
         this._handleCardClick = handleCardClick;
@@ -29,7 +29,7 @@ export class DefaultCard {
     cardElement.querySelector('.elements__img').alt = cardTitle;
     cardElement.querySelector('.elements__title').textContent = cardTitle;
 
-    cardElement.querySelector('.popup').id = `${this.cardId}-popup`;
+    cardElement.querySelector('.popup').id = `popup-${this.cardId}`;
 
     this._setEventListeners(cardElement);
 

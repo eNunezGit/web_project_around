@@ -14,7 +14,14 @@ api.getInitialCards()
             const card = new DefaultCard({
                 cardTitle: item.name,
                 cardImg: item.link,
-                cardId: item.cardId,
+                cardId: item._id,
+                likeVal: item.isLiked,
+                ownerId: item.ownerId,
+                handleCardClick: () => {
+                    const cardPopup = new PopupWithImage(`#popup-${item._id}`);
+                    cardPopup.open(item.name, item.link);
+                    cardPopup.setEventListeners();
+                }
             })
             cardSection.addItem(card.setUpCard());
         }
