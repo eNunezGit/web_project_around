@@ -6,7 +6,7 @@ export class DefaultCard {
         this.cardImg = cardImg;
         this.cardId = cardId;
         this.likeVal = likeVal;
-        this._ownerId = ownerId;
+        this.ownerId = ownerId;
 
         this._handleCardClick = handleCardClick;
     }
