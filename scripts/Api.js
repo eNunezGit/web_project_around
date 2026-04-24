@@ -51,6 +51,17 @@ class Api {
             console.log(err);
         });
     }
+
+    updateUserInfo({name, about}) {
+        return fetch(`${this._baseUrl}/users/me`, {
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({ name, about })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
 }
 
 const api = new Api({

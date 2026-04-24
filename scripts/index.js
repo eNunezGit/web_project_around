@@ -79,7 +79,17 @@ const editButton = document.querySelector('#editSettingsButton');
 
 editButton.addEventListener('click', () => {
     popupFormSetUp(editProfileForm, saveSettingsButton, (data) => {
-        userInfo.setUserInfo({name: data.userName, about: data.userInfo});
+        saveSettingsButton.textContent = 'Guardando...';
+        saveSettingsButton.disabled = true;
+
+        api.updateUserInfo({name: data.userName, about: data.userInfo})
+        .then(() => {
+            userInfo.setUserInfo({name: data.userName, about: data.userInfo});
+        })
+        .finally(() => {
+            saveSettingsButton.textContent = 'Guardar';
+            saveSettingsButton.disabled = false;
+        });
 
         const nameInput = editProfileForm.querySelector('#user-name');
         const aboutInput = editProfileForm.querySelector('#user-info');
