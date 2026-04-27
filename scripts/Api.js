@@ -62,6 +62,17 @@ class Api {
             console.log(err);
         });
     }
+
+    addCard({name, link}) {
+        return fetch(`${this._baseUrl}/cards`, {
+            method: "POST",
+            headers: this._headers,
+            body: JSON.stringify({ name, link })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
 }
 
 const api = new Api({
