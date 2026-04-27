@@ -13,27 +13,25 @@
 <body>
     <div class="page">
         <div id="editProfileForm" class="popup" style="display: none;">
-            <div class="popup__overlay">
-                <div class="popup__form-container">
-                    <button class="popup__close-button">
-                        <img
-                        class="popup__close-button-img"
-                        src="./images/close-icon.svg"
-                        alt="Botón de cerrar">
+            <div class="popup__form-container">
+                <button class="popup__close-button">
+                    <img
+                    class="popup__close-button-img"
+                    src="./images/close-icon.svg"
+                    alt="Botón de cerrar">
+                </button>
+                <form class="popup__form">
+                    <fieldset class="popup__form-fieldset">
+                        <p class="popup__form-legend">Editar Perfil</p>
+                        <input id="user-name" name="userName" class="popup__form-input" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
+                        <span id="user-name-error" class="popup__error-info">Lore ipsum</span>
+                        <input id="user-info" name="userInfo" class="popup__form-input" type="text" placeholder="Acerca de ti" minlength="2" maxlength="200" required>
+                        <span id="user-info-error" class="popup__error-info">Lore ipsum</span>
+                    </fieldset>
+                    <button id="saveSettingsButton" class="popup__submit-button" type="submit">
+                        <span class="popup__submit-button-text">Guardar</span>
                     </button>
-                    <form class="popup__form">
-                        <fieldset class="popup__form-fieldset">
-                            <p class="popup__form-legend">Editar Perfil</p>
-                            <input id="user-name" name="userName" class="popup__form-input" type="text" placeholder="Nombre" minlength="2" maxlength="40" required>
-                            <span id="user-name-error" class="popup__error-info">Lore ipsum</span>
-                            <input id="user-info" name="userInfo" class="popup__form-input" type="text" placeholder="Acerca de ti" minlength="2" maxlength="200" required>
-                            <span id="user-info-error" class="popup__error-info">Lore ipsum</span>
-                        </fieldset>
-                        <button id="saveSettingsButton" class="popup__submit-button" type="submit">
-                            <span class="popup__submit-button-text">Guardar</span>
-                        </button>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
         <div id="addCardForm" class="popup" style="display: none;">
