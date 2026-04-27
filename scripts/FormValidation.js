@@ -10,6 +10,7 @@ export class FormValidation {
     }
 
     enableValidation() {
+        this.resetValidation();
         this._formElement.addEventListener("submit", function (evt) {
             evt.preventDefault();
         });

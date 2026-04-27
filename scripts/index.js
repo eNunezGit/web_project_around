@@ -46,28 +46,18 @@ api.getInitialData()
 });
 
 
-const popupFormSetUp = (formPopupSelector, submitButtonSelector, submitLogic) => {
-    const formPopup = new PopupWithForm(`#${formPopupSelector.id}`,
-        (data) => {
-            submitLogic(data);
-        },
-        () => {
-            formValidation.resetValidation();
-        });
-        formPopup.setEventListeners();
-        formPopup.open();
-        
-        const formSelector = formPopupSelector.querySelector('.popup__form');
+const popupFormSetUp = (formPopupSelector, submitButtonSelector) => {
+    const formSelector = formPopupSelector.querySelector('.popup__form');
 
-        const formValidation = new FormValidation({
-            fieldsetSelector: '.popup__form-fieldset',
-            inputSelector: '.popup__form-input',
-            submitButtonSelector: submitButtonSelector,
-            inactiveButtonClass: 'popup__submit-button_disabled',
-            inputErrorClass: 'popup__form-input-error',
-            errorClass: 'popup__error-info_visible'
-        }, formSelector);
-        formValidation.enableValidation();
+    const formValidation = new FormValidation({
+        fieldsetSelector: '.popup__form-fieldset',
+        inputSelector: '.popup__form-input',
+        submitButtonSelector: submitButtonSelector,
+        inactiveButtonClass: 'popup__submit-button_disabled',
+        inputErrorClass: 'popup__form-input-error',
+        errorClass: 'popup__error-info_visible'
+    }, formSelector);
+    formValidation.enableValidation();
 };
 
 
@@ -78,26 +68,35 @@ const editButton = document.querySelector('#editSettingsButton');
 
 
 editButton.addEventListener('click', () => {
-    popupFormSetUp(editProfileForm, saveSettingsButton, (data) => {
-        saveSettingsButton.textContent = 'Guardando...';
-        saveSettingsButton.disabled = true;
+    popupFormSetUp(editProfileForm, saveSettingsButton);
 
-        api.updateUserInfo({name: data.userName, about: data.userInfo})
-        .then(() => {
-            userInfo.setUserInfo({name: data.userName, about: data.userInfo});
-        })
-        .finally(() => {
-            saveSettingsButton.textContent = 'Guardar';
-            saveSettingsButton.disabled = false;
-        });
+    const formPopup = new PopupWithForm(
+        `#${editProfileForm.id}`,
+        (data) => {
+            saveSettingsButton.textContent = 'Guardando...';
+            saveSettingsButton.disabled = true;
 
-        const nameInput = editProfileForm.querySelector('#user-name');
-        const aboutInput = editProfileForm.querySelector('#user-info');
-        const currentUserInfo = userInfo.getUserInfo();
+            api.updateUserInfo({name: data.userName, about: data.userInfo})
+            .then(() => {
+                userInfo.setUserInfo({name: data.userName, about: data.userInfo});
+                formPopup.close();
+            })
+            .finally(() => {
+                saveSettingsButton.textContent = 'Guardar';
+                saveSettingsButton.disabled = false;
+            });
+        }
+    );
 
-        nameInput.placeholder = currentUserInfo.name;
-        aboutInput.placeholder = currentUserInfo.about;
-    });
+    formPopup.setEventListeners();
+    formPopup.open();
+
+    const nameInput = editProfileForm.querySelector('#user-name');
+    const aboutInput = editProfileForm.querySelector('#user-info');
+    const currentUserInfo = userInfo.getUserInfo();
+
+    nameInput.placeholder = currentUserInfo.name;
+    aboutInput.placeholder = currentUserInfo.about;
 });
 
 const addCardForm = document.querySelector('#addCardForm');
