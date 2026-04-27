@@ -80,6 +80,12 @@ editButton.addEventListener('click', () => {
                 userInfo.setUserInfo({name: data.userName, about: data.userInfo});
                 formPopup.close();
             })
+            .catch(err => {
+                console.log(`
+                    User info update failed...
+                    Error: ${err.status} ${err.statusText}
+                    `);
+            })
             .finally(() => {
                 formPopup.renderLoading(false, 'Guardar');
             });
