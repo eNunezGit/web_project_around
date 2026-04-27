@@ -25,6 +25,10 @@ export class Popup {
 
     setEventListeners(){
         this._popup.querySelector('.popup__close-button').addEventListener('click', () => this.close());
-        this._popup.querySelector('.popup__overlay').addEventListener('dblclick', () => this.close());
+        this._popup.addEventListener('dblclick', (e) => {
+            if (e.target === this._popup) {
+                this.close();
+            }
+        });
     }
 }
