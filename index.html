@@ -35,27 +35,25 @@
             </div>
         </div>
         <div id="addCardForm" class="popup" style="display: none;">
-            <div class="popup__overlay">
-                <div class="popup__form-container">
-                    <button class="popup__close-button">
-                        <img
-                        class="popup__close-button-img"
-                        src="./images/close-icon.svg"
-                        alt="Botón de cerrar">
+            <div class="popup__form-container">
+                <button class="popup__close-button">
+                    <img
+                    class="popup__close-button-img"
+                    src="./images/close-icon.svg"
+                    alt="Botón de cerrar">
+                </button>
+                <form class="popup__form">
+                    <fieldset class="popup__form-fieldset">
+                        <p class="popup__form-legend">Nuevo Lugar</p>
+                        <input id="card-title" name="cardTitle" class="popup__form-input" type="text" placeholder="Título" minlength="2" maxlength="40" required>
+                        <span id="card-title-error" class="popup__error-info">Lore ipsum</span>
+                        <input id="card-url" name="cardUrl" class="popup__form-input" type="url" placeholder="Enlace a la imagen" required>
+                        <span id="card-url-error" class="popup__error-info">Lore ipsum</span>
+                    </fieldset>
+                    <button id="createCardButton" class="popup__submit-button" type="submit">
+                        <span class="popup__submit-button-text">Crear</span>
                     </button>
-                    <form class="popup__form">
-                        <fieldset class="popup__form-fieldset">
-                            <p class="popup__form-legend">Nuevo Lugar</p>
-                            <input id="card-title" name="cardTitle" class="popup__form-input" type="text" placeholder="Título" minlength="2" maxlength="40" required>
-                            <span id="card-title-error" class="popup__error-info">Lore ipsum</span>
-                            <input id="card-url" name="cardUrl" class="popup__form-input" type="url" placeholder="Enlace a la imagen" required>
-                            <span id="card-url-error" class="popup__error-info">Lore ipsum</span>
-                        </fieldset>
-                        <button id="createCardButton" class="popup__submit-button" type="submit">
-                            <span class="popup__submit-button-text">Crear</span>
-                        </button>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
         <template id="cardTemplate">
