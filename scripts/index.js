@@ -73,8 +73,7 @@ editButton.addEventListener('click', () => {
     const formPopup = new PopupWithForm(
         `#${editProfileForm.id}`,
         (data) => {
-            saveSettingsButton.textContent = 'Guardando...';
-            saveSettingsButton.disabled = true;
+            formPopup.renderLoading(true, 'Guardando...');
 
             api.updateUserInfo({name: data.userName, about: data.userInfo})
             .then(() => {
@@ -82,8 +81,7 @@ editButton.addEventListener('click', () => {
                 formPopup.close();
             })
             .finally(() => {
-                saveSettingsButton.textContent = 'Guardar';
-                saveSettingsButton.disabled = false;
+                formPopup.renderLoading(false, 'Guardar');
             });
         }
     );

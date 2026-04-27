@@ -9,6 +9,18 @@ export class PopupWithForm extends Popup {
         this._inputs = Array.from(this._popup.querySelectorAll('.popup__form-input'));
     }
 
+    renderLoading(isLoading, text = 'Guardando...') {
+        const button = this._popup.querySelector('.popup__submit-button');
+
+        if (isLoading) {
+            button.disabled = true;
+            button.textContent = text;
+        } else {
+            button.disabled = false;
+            button.textContent = text;
+        }
+    }
+
     _getInputValues() {
         const inputValues = {};
         this._inputs.forEach(input => {
