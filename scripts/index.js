@@ -109,12 +109,50 @@ const addCardButton = document.querySelector('#addCardButton');
 
 
 addCardButton.addEventListener('click', () => {
-    popupFormSetUp(addCardForm, createCardButton, (data) => {
-        const newCard = new DefaultCard(data.cardTitle, data.cardUrl, cardId, () => {
-            const cardPopup = new PopupWithImage(`#${cardId}-popup`);
-            cardPopup.open(data.cardTitle, data.cardUrl);
-            cardPopup.setEventListeners();
-        });
-        document.querySelector('.elements__grid').prepend(newCard.setUpCard());
-    });
+    popupFormSetUp(addCardForm, createCardButton);
+
+    const formPopup = new PopupWithForm(
+        `#${addCardForm.id}`,
+        (data) => {
+            formPopup.renderLoading(true, 'Creando...');
+
+            api.addCard({name: data.cardTitle, link: data.cardUrl})
+            .then((newCardData) => {
+                const cardSection = new Section({
+                    items: [data],
+                    renderer: (item) => {
+                        console.log(items);
+                        const newCard = new DefaultCard({
+                            cardTitle: newCardData.name,
+                            cardImg: newCardData.link,
+                            cardId: newCardData._id,
+                            likeVal: false,
+                            ownerId: newCardData.ownerId,
+                            handleCardClick: () => {
+                                const cardPopup = new PopupWithImage(`#popup-${newCardData._id}`);
+                                cardPopup.open(newCardData.name, newCardData.link);
+                                cardPopup.setEventListeners();
+                            }
+                        })
+                    cardSection.addItem(card.setUpCard());
+                    }
+                }, '.elements__grid');
+                
+                cardSection.renderer();
+                formPopup.close();
+            })
+            .catch(err => {
+                console.log(`
+                    Card creation failed...
+                    Error: ${err.status} ${err.statusText}
+                    `);
+            })
+            .finally(() => {
+                formPopup.renderLoading(false, 'Crear');
+            });
+        }
+    );
+
+    formPopup.setEventListeners();
+    formPopup.open();
 });
