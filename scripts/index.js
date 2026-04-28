@@ -115,37 +115,25 @@ addCardButton.addEventListener('click', () => {
         `#${addCardForm.id}`,
         (data) => {
             formPopup.renderLoading(true, 'Creando...');
-
             api.addCard({name: data.cardTitle, link: data.cardUrl})
-            .then((newCardData) => {
-                const cardSection = new Section({
-                    items: [data],
-                    renderer: (item) => {
-                        console.log(items);
-                        const newCard = new DefaultCard({
-                            cardTitle: newCardData.name,
-                            cardImg: newCardData.link,
-                            cardId: newCardData._id,
-                            likeVal: false,
-                            ownerId: newCardData.ownerId,
-                            handleCardClick: () => {
-                                const cardPopup = new PopupWithImage(`#popup-${newCardData._id}`);
-                                cardPopup.open(newCardData.name, newCardData.link);
-                                cardPopup.setEventListeners();
-                            }
-                        })
-                    cardSection.addItem(card.setUpCard());
+            .then(() => {
+                const newCard = new DefaultCard({
+                    cardTitle: data.cardTitle,
+                    cardImg: data.cardUrl,
+                    cardId: data._id,
+                    likeVal: data.isLiked,
+                    ownerId: data.ownerId,
+                    handleCardClick: () => {
+                        const cardPopup = new PopupWithImage(`#popup-${data._id}`);
+                        cardPopup.open(data.name, data.link);
+                        cardPopup.setEventListeners();
                     }
-                }, '.elements__grid');
-                
-                cardSection.renderer();
+                });
+                document.querySelector('.elements__grid').prepend(newCard.setUpCard());
                 formPopup.close();
             })
             .catch(err => {
-                console.log(`
-                    Card creation failed...
-                    Error: ${err.status} ${err.statusText}
-                    `);
+                console.log(err);
             })
             .finally(() => {
                 formPopup.renderLoading(false, 'Crear');

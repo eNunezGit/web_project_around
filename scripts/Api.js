@@ -70,6 +70,13 @@ class Api {
             body: JSON.stringify({ name, link })
         })
         .catch(err => {
+            console.log(`
+                    Card creation failed...
+                    Error: ${err.status} ${err.statusText}
+            `);
+        });
+    }
+        .catch(err => {
             console.log(err);
         });
     }
