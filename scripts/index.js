@@ -14,6 +14,9 @@ const userInfo = new UserInfo({
     avatarSelector: '.profile__avatar'
 });
 
+const imagePopup = new PopupWithImage('#imagePopup');
+imagePopup.setEventListeners();
+
 api.getInitialData()
 .then(({user, initialCards}) => {
     userInfo.setUserInfo({
@@ -33,9 +36,7 @@ api.getInitialData()
                 likeVal: item.isLiked,
                 ownerId: item.ownerId,
                 handleCardClick: () => {
-                    const cardPopup = new PopupWithImage(`#popup-${item._id}`);
-                    cardPopup.open(item.name, item.link);
-                    cardPopup.setEventListeners();
+                    imagePopup.open(item.name, item.link);
                 }
             })
             cardSection.addItem(card.setUpCard());
@@ -124,9 +125,7 @@ addCardButton.addEventListener('click', () => {
                     likeVal: data.isLiked,
                     ownerId: data.ownerId,
                     handleCardClick: () => {
-                        const cardPopup = new PopupWithImage(`#popup-${data._id}`);
-                        cardPopup.open(data.name, data.link);
-                        cardPopup.setEventListeners();
+                        imagePopup.open(data.name, data.link);
                     }
                 });
                 document.querySelector('.elements__grid').prepend(newCard.setUpCard());

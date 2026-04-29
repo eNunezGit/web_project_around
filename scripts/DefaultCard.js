@@ -29,8 +29,6 @@ export class DefaultCard {
     cardElement.querySelector('.elements__img').alt = cardTitle;
     cardElement.querySelector('.elements__title').textContent = cardTitle;
 
-    cardElement.querySelector('.popup').id = `popup-${this.cardId}`;
-
     this._setEventListeners(cardElement);
 
     return cardElement;
