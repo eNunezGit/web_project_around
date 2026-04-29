@@ -5,12 +5,20 @@ body {
     font-size: 1rem;
 }
 
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 button {
     margin: 0;
     padding: 0;
     background: none;
     border: none;
     cursor: pointer;
+
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 button:not(:disabled):hover {
