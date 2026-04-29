@@ -76,6 +76,22 @@ class Api {
             `);
         });
     }
+
+    deleteCard(cardId) {
+        return fetch(`${this._baseUrl}/cards/${cardId}`, {
+            method: "DELETE",
+            headers: this._headers
+        })
+        .then(res => {
+            if (res.ok) {
+                console.log('Card deleted successfully');
+                return Promise.resolve();
+            }
+            return Promise.reject(`
+                Card deletion failed...
+                Error: ${res.status} ${res.statusText}
+            `)
+        })
         .catch(err => {
             console.log(err);
         });
