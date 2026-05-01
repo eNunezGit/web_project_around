@@ -1,12 +1,19 @@
 import { Popup } from "./Popup.js";
 
 export class PopupWithForm extends Popup {
-    constructor(popupSelector, submitHandler) { 
+    constructor(popupSelector, submitHandler, validationResetHandler) { 
         super(popupSelector);
         this._submitHandler = submitHandler;
+        this._validationResetHandler = validationResetHandler;
 
         this._form = this._popup.querySelector('.popup__form');
         this._inputs = Array.from(this._popup.querySelectorAll('.popup__form-input'));
+    }
+
+    close() {
+        super.close();
+        this._form.reset();
+        this._validationResetHandler();
     }
 
     renderLoading(isLoading, text = 'Guardando...') {

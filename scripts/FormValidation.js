@@ -10,11 +10,6 @@ export class FormValidation {
     }
 
     enableValidation() {
-        this.resetValidation();
-        this._formElement.addEventListener("submit", function (evt) {
-            evt.preventDefault();
-        });
-
         const fieldsetList = Array.from(this._formElement.querySelectorAll(this._fieldsetSelector));
 
         fieldsetList.forEach((fieldset) => {
@@ -25,11 +20,11 @@ export class FormValidation {
     _setEventListeners(fieldset) {
         const inputList = Array.from(fieldset.querySelectorAll(this._inputSelector));
 
-        this._toggleButtonState(inputList, this._submitButtonSelector);
+        this._toggleButtonState(inputList, this._formElement.querySelector(this._submitButtonSelector));
         inputList.forEach((input) => {
             input.addEventListener("input", () => {
                 this._checkInputValidity(input);
-                this._toggleButtonState(inputList, this._submitButtonSelector);
+                this._toggleButtonState(inputList, this._formElement.querySelector(this._submitButtonSelector));
             });
         });
     }
@@ -83,7 +78,5 @@ export class FormValidation {
             errorElement.classList.remove(this._errorClass);
             errorElement.textContent = "";
         });
-
-        this._formElement.reset();
     }
 }

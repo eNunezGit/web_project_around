@@ -46,100 +46,96 @@ api.getInitialData()
     cardSection.renderer();
 });
 
-
-const popupFormSetUp = (formPopupSelector, submitButtonSelector) => {
-    const formSelector = formPopupSelector.querySelector('.popup__form');
-
-    const formValidation = new FormValidation({
-        fieldsetSelector: '.popup__form-fieldset',
-        inputSelector: '.popup__form-input',
-        submitButtonSelector: submitButtonSelector,
-        inactiveButtonClass: 'popup__submit-button_disabled',
-        inputErrorClass: 'popup__form-input-error',
-        errorClass: 'popup__error-info_visible'
-    }, formSelector);
-    formValidation.enableValidation();
+let formConfig = {
+    fieldsetSelector: '.popup__form-fieldset',
+    inputSelector: '.popup__form-input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_disabled',
+    inputErrorClass: 'popup__form-input-error',
+    errorClass: 'popup__error-info_visible'
 };
 
+const editProfile = document.querySelector('#editProfile');
+const editProfileButton = document.querySelector('#editSettingsButton');
 
-const editProfileForm = document.querySelector('#editProfileForm');
-const saveSettingsButton = editProfileForm.querySelector('#saveSettingsButton');
-const editButton = document.querySelector('#editSettingsButton');
+const editProfileFormValidator = new FormValidation(formConfig, editProfile.querySelector('.popup__form'));
+editProfileFormValidator.enableValidation();
 
+const editProfilePopup = new PopupWithForm(
+    `#${editProfile.id}`,
+    (data) => {
+        editProfilePopup.renderLoading(true, 'Guardando...');
 
+        api.updateUserInfo({name: data.userName, about: data.userInfo})
+        .then(() => {
+            userInfo.setUserInfo({name: data.userName, about: data.userInfo});
+            editProfilePopup.close();
+        })
+        .catch(err => {
+            console.log(`
+                User info update failed...
+                Error: ${err.status} ${err.statusText}
+                `);
+        })
+        .finally(() => {
+            editProfilePopup.renderLoading(false, 'Guardar');
+            editProfileFormValidator.resetValidation();
+        });
+    },
+    () => editProfileFormValidator.resetValidation()
+);
+editProfilePopup.setEventListeners();
 
-editButton.addEventListener('click', () => {
-    popupFormSetUp(editProfileForm, saveSettingsButton);
+editProfileButton.addEventListener('click', () => {
+    editProfilePopup.open();
 
-    const formPopup = new PopupWithForm(
-        `#${editProfileForm.id}`,
-        (data) => {
-            formPopup.renderLoading(true, 'Guardando...');
-
-            api.updateUserInfo({name: data.userName, about: data.userInfo})
-            .then(() => {
-                userInfo.setUserInfo({name: data.userName, about: data.userInfo});
-                formPopup.close();
-            })
-            .catch(err => {
-                console.log(`
-                    User info update failed...
-                    Error: ${err.status} ${err.statusText}
-                    `);
-            })
-            .finally(() => {
-                formPopup.renderLoading(false, 'Guardar');
-            });
-        }
-    );
-
-    formPopup.setEventListeners();
-    formPopup.open();
-
-    const nameInput = editProfileForm.querySelector('#user-name');
-    const aboutInput = editProfileForm.querySelector('#user-info');
+    const nameInput = editProfile.querySelector('#user-name');
+    const aboutInput = editProfile.querySelector('#user-info');
     const currentUserInfo = userInfo.getUserInfo();
 
     nameInput.placeholder = currentUserInfo.name;
     aboutInput.placeholder = currentUserInfo.about;
 });
 
-const addCardForm = document.querySelector('#addCardForm');
-const createCardButton = addCardForm.querySelector('#createCardButton');
+
+
+const addCard = document.querySelector('#addCard');
 const addCardButton = document.querySelector('#addCardButton');
 
+const addCardFormValidator = new FormValidation(formConfig, addCard.querySelector('.popup__form'));
+addCardFormValidator.enableValidation();
+
+const addCardPopup = new PopupWithForm(
+    `#${addCard.id}`,
+    (data) => {
+        addCardPopup.renderLoading(true, 'Creando...');
+        api.addCard({name: data.cardTitle, link: data.cardUrl})
+        .then(() => {
+            const newCard = new DefaultCard({
+                cardTitle: data.cardTitle,
+                cardImg: data.cardUrl,
+                cardId: data._id,
+                likeVal: data.isLiked,
+                ownerId: data.ownerId,
+                handleCardClick: () => {
+                    imagePopup.open(data.name, data.link);
+                }
+            });
+            document.querySelector('.elements__grid').prepend(newCard.setUpCard());
+            addCardPopup.close();
+        })
+        .catch(err => {
+            console.log(err);
+        })
+        .finally(() => {
+            addCardPopup.renderLoading(false, 'Crear');
+            addCardFormValidator.resetValidation();
+        });
+    },
+    () => addCardFormValidator.resetValidation()
+);
+addCardPopup.setEventListeners();
 
 addCardButton.addEventListener('click', () => {
-    popupFormSetUp(addCardForm, createCardButton);
-
-    const formPopup = new PopupWithForm(
-        `#${addCardForm.id}`,
-        (data) => {
-            formPopup.renderLoading(true, 'Creando...');
-            api.addCard({name: data.cardTitle, link: data.cardUrl})
-            .then(() => {
-                const newCard = new DefaultCard({
-                    cardTitle: data.cardTitle,
-                    cardImg: data.cardUrl,
-                    cardId: data._id,
-                    likeVal: data.isLiked,
-                    ownerId: data.ownerId,
-                    handleCardClick: () => {
-                        imagePopup.open(data.name, data.link);
-                    }
-                });
-                document.querySelector('.elements__grid').prepend(newCard.setUpCard());
-                formPopup.close();
-            })
-            .catch(err => {
-                console.log(err);
-            })
-            .finally(() => {
-                formPopup.renderLoading(false, 'Crear');
-            });
-        }
-    );
-
-    formPopup.setEventListeners();
-    formPopup.open();
+    addCardPopup.open();
 });
