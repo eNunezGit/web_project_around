@@ -95,6 +95,38 @@
     color: red;
 }
 
+.popup__confirm-container {
+    width: 350px;
+    min-width: 200px;
+    max-width: 400px;
+    height: 175px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background-color: white;
+    margin-top: 25vh;
+}
+
+.popup__confirm-content {
+    width: 85%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.popup__confirm-text {
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-family: "Inter-Black", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    align-self: flex-start;
+}
+
 .popup__submit-button {
     padding-top: 2vh;
     padding-bottom: 2vh;

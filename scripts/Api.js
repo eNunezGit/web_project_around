@@ -69,6 +69,11 @@ class Api {
             headers: this._headers,
             body: JSON.stringify({ name, link })
         })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
         .catch(err => {
             console.log(`
                     Card creation failed...

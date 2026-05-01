@@ -71,6 +71,22 @@
                 <p class="popup__img-title"></p>
             </div>
         </div>
+        <div id="deleteConfirmPopup" class="popup" style="display: none;">
+            <div class="popup__confirm-container">
+                <button class="popup__close-button">
+                    <img
+                    class="popup__close-button-img"
+                    src="./images/close-icon.svg"
+                    alt="Botón de cerrar">
+                </button>
+                <div class="popup__confirm-content">
+                    <p class="popup__confirm-text">¿Estás seguro/a?</p>
+                    <button id="confirmDeleteButton" class="popup__submit-button" type="button">
+                        <span class="popup__submit-button-text">Sí</span>
+                    </button>
+                </div>
+            </div>
+        </div>
         <template id="cardTemplate">
             <div id="" class="elements__card">
                 <img

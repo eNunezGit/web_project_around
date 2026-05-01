@@ -1,9 +1,11 @@
 import {Section} from "./Section.js";
 import {DefaultCard} from "./DefaultCard.js";
 import {PopupWithImage} from "./PopupWithImage.js";
+import {PopupWithConfirm} from "./PopupWithConfirm.js";
 import {FormValidation} from "./FormValidation.js";
 import {PopupWithForm} from "./PopupWithForm.js";
 import {UserInfo} from "./UserInfo.js";
+import {deleteCard, likeCard} from "./utils.js";
 import api from "./Api.js";
 
 
@@ -16,6 +18,10 @@ const userInfo = new UserInfo({
 
 const imagePopup = new PopupWithImage('#imagePopup');
 imagePopup.setEventListeners();
+
+
+const deleteConfirmPopup = new PopupWithConfirm('#deleteConfirmPopup');
+deleteConfirmPopup.setEventListeners();
 
 api.getInitialData()
 .then(({user, initialCards}) => {
@@ -37,6 +43,43 @@ api.getInitialData()
                 ownerId: item.ownerId,
                 handleCardClick: () => {
                     imagePopup.open(item.name, item.link);
+                },
+                handleDeleteClick: () => {
+                    deleteConfirmPopup.open();
+                    deleteConfirmPopup.setSubmitAction(() => {
+                        deleteConfirmPopup.renderLoading(true, 'Eliminando...');
+
+                        api.deleteCard(item._id)
+                        .then(() => {
+                            deleteCard(document.getElementById(item._id));
+                            deleteConfirmPopup.close();
+                            deleteConfirmPopup.renderLoading(false, 'Sí');
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                    });
+                },
+                handleLikeClick: () => {
+                    if (!item.isLiked) {
+                        api.likeCard(item._id)
+                        .then(() => {
+                            item.isLiked = true;
+                            likeCard(document.getElementById(item._id), item.isLiked);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                    } else {
+                        api.dislikeCard(item._id)
+                        .then(() => {
+                            item.isLiked = false;
+                            likeCard(document.getElementById(item._id), item.isLiked);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                    }
                 }
             })
             cardSection.addItem(card.setUpCard());
@@ -110,15 +153,52 @@ const addCardPopup = new PopupWithForm(
     (data) => {
         addCardPopup.renderLoading(true, 'Creando...');
         api.addCard({name: data.cardTitle, link: data.cardUrl})
-        .then(() => {
+        .then((cardData) => {
             const newCard = new DefaultCard({
-                cardTitle: data.cardTitle,
-                cardImg: data.cardUrl,
-                cardId: data._id,
-                likeVal: data.isLiked,
-                ownerId: data.ownerId,
+                cardTitle: cardData.name,
+                cardImg: cardData.link,
+                cardId: cardData._id,
+                likeVal: cardData.isLiked,
+                ownerId: cardData.ownerId,
                 handleCardClick: () => {
-                    imagePopup.open(data.name, data.link);
+                    imagePopup.open(cardData.name, cardData.link);
+                },
+                handleDeleteClick: () => {
+                    deleteConfirmPopup.open();
+                    deleteConfirmPopup.setSubmitAction(() => {
+                        deleteConfirmPopup.renderLoading(true, 'Eliminando...');
+
+                        api.deleteCard(cardData._id)
+                        .then(() => {
+                            deleteCard(document.getElementById(cardData._id));
+                            deleteConfirmPopup.close();
+                            deleteConfirmPopup.renderLoading(false, 'Sí');
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                    });
+                },
+                handleLikeClick: () => {
+                    if (!cardData.isLiked) {
+                        api.likeCard(cardData._id)
+                        .then(() => {
+                            cardData.isLiked = true;
+                            likeCard(document.getElementById(cardData._id), cardData.isLiked);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                    } else {
+                        api.dislikeCard(cardData._id)
+                        .then(() => {
+                            cardData.isLiked = false;
+                            likeCard(document.getElementById(cardData._id), cardData.isLiked);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                    }
                 }
             });
             document.querySelector('.elements__grid').prepend(newCard.setUpCard());
