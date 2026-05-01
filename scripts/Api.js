@@ -96,6 +96,46 @@ class Api {
             console.log(err);
         });
     }
+
+    likeCard(cardId) {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+            method: "PUT",
+            headers: this._headers
+        })
+        .then(res => {
+            if (res.ok) {
+                console.log('Card liked successfully');
+                return Promise.resolve();
+            }
+            return Promise.reject(`
+                Card like failed...
+                Error: ${res.status} ${res.statusText}
+            `)
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
+    dislikeCard(cardId) {
+        return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+            method: "DELETE",
+            headers: this._headers
+        })
+        .then(res => {
+            if (res.ok) {
+                console.log('Card disliked successfully');
+                return Promise.resolve();
+            }
+            return Promise.reject(`
+                Card dislike failed...
+                Error: ${res.status} ${res.statusText}
+            `)
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
 }
 
 const api = new Api({
