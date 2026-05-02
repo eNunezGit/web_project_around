@@ -140,7 +140,39 @@ editProfileButton.addEventListener('click', () => {
     aboutInput.placeholder = currentUserInfo.about;
 });
 
+const editAvatar = document.querySelector('#editAvatar');
+const editAvatarButton = document.querySelector('#editAvatarButton');
 
+const editAvatarFormValidator = new FormValidation(formConfig, editAvatar.querySelector('.popup__form'));
+editAvatarFormValidator.enableValidation();
+
+const editAvatarPopup = new PopupWithForm(
+    `#${editAvatar.id}`,
+    (data) => {
+        editAvatarPopup.renderLoading(true, 'Guardando...');
+        api.updateUserAvatar({avatar: data.avatarUrl})
+        .then(() => {
+            userInfo.setUserInfo({avatar: data.avatarUrl});
+            editAvatarPopup.close();
+        })
+        .catch(err => {
+            console.log(`
+                Avatar update failed...
+                Error: ${err.status} ${err.statusText}
+            `);
+        })
+        .finally(() => {
+            editAvatarPopup.renderLoading(false, 'Guardar');
+            editAvatarFormValidator.resetValidation();
+        });
+    },
+    () => editAvatarFormValidator.resetValidation()
+);
+editAvatarPopup.setEventListeners();
+
+editAvatarButton.addEventListener('click', () => {
+    editAvatarPopup.open();
+});
 
 const addCard = document.querySelector('#addCard');
 const addCardButton = document.querySelector('#addCardButton');

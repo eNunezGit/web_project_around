@@ -11,6 +11,14 @@
     margin-top: 5vh;
 }
 
+.profile__edit-avatar-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .profile__edit-avatar-button {
     width: 100px;
     height: 100px;
@@ -20,6 +28,25 @@
     overflow: hidden;
     border: none;
     background: none;
+}
+
+.profile__edit-avatar-icon {
+    z-index: 1;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.profile__edit-avatar-container:hover .profile__edit-avatar-icon {
+    opacity: 1;
 }
 
 .profile__avatar {

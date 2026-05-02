@@ -63,6 +63,17 @@ class Api {
         });
     }
 
+    updateUserAvatar({avatar}) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({ avatar })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
     addCard({name, link}) {
         return fetch(`${this._baseUrl}/cards`, {
             method: "POST",

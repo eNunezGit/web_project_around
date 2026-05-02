@@ -34,6 +34,26 @@
                 </form>
             </div>
         </div>
+        <div id="editAvatar" class="popup" style="display: none;">
+            <div class="popup__form-container">
+                <button class="popup__close-button">
+                    <img
+                    class="popup__close-button-img"
+                    src="./images/close-icon.svg"
+                    alt="Botón de cerrar">
+                </button>
+                <form class="popup__form">
+                    <fieldset class="popup__form-fieldset">
+                        <p class="popup__form-legend">Editar Avatar</p>
+                        <input id="avatar-url" name="avatarUrl" class="popup__form-input" type="url" placeholder="Enlace a la imagen" required>
+                        <span id="avatar-url-error" class="popup__error-info">Lore ipsum</span>
+                    </fieldset>
+                    <button id="saveAvatarButton" class="popup__submit-button" type="submit">
+                        <span class="popup__submit-button-text">Guardar</span>
+                    </button>
+                </form>
+            </div>
+        </div>
         <div id="addCard" class="popup" style="display: none;">
             <div class="popup__form-container">
                 <button class="popup__close-button">
@@ -117,12 +137,17 @@
             alt="Alrededor de E.U.">
         </header>
         <div class="profile profile_margin">
-            <button class="profile__edit-avatar-button">
-                <img
-                class="profile__avatar"
-                src="./images/default-pic.svg"
-                alt="Foto de perfil">
-            </button>
+            <div class="profile__edit-avatar-container">
+                <img class="profile__edit-avatar-icon"
+                src="./images/edit-button.svg"
+                alt="Icono de editar avatar">
+                <button id="editAvatarButton" class="profile__edit-avatar-button">
+                    <img
+                    class="profile__avatar"
+                    src="./images/default-pic.svg"
+                    alt="Foto de perfil">
+                </button>
+            </div>
             <div class="profile__settings">
                 <div class="profile__settings-wrapper">
                     <p class="profile__name">Tu Nombre</p>
